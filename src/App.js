@@ -1,13 +1,16 @@
 import { RouterProvider } from 'react-router-dom';
 import './App.css';
 import { router } from './Routes/Router';
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   return (
     <div className='max-w-screen-xl mx-auto'>
-      <RouterProvider router={router}>
+      < HelmetProvider>
+        <RouterProvider router={router}>
 
-      </RouterProvider>
+        </RouterProvider>
+      </HelmetProvider>
     </div>
 
   );
