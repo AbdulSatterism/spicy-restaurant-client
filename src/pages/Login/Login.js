@@ -97,9 +97,9 @@ const Login = () => {
                                 <input onBlur={handleValidateCapture} type="text" name='capture' placeholder="enter your capture input" className="input input-bordered" />
 
                             </div>
-
+                            {/* TODO: make button disabled */}
                             <div className="form-control mt-6">
-                                <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
+                                <input disabled={false} className="btn btn-primary" type="submit" value="Login" />
                             </div>
 
                             <p className='text-center mx-auto'><small className='text-red-600'>{error}</small></p>
