@@ -7,6 +7,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2'
 import { useState } from 'react';
 import signupImg from "../../assets/others/authentication2.png"
+import SocialLogin from '../Shared/Social/SocialLogin/SocialLogin';
 
 const Signup = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -22,18 +23,33 @@ const Signup = () => {
 
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        reset()
-                        Swal.fire({
-                            title: 'User Created Successfully',
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
+                        const saveUser = { name: data.name, email: data.email }
+                        // set user in database
+                        fetch('http://localhost:5000/users', {
+                            method: "POST",
+                            headers: {
+                                'content-type': 'application/json'
                             },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            }
+                            body: JSON.stringify(saveUser)
                         })
-                        console.log(user)
-                        navigate('/')
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset()
+                                    Swal.fire({
+                                        title: 'User Created Successfully',
+                                        showClass: {
+                                            popup: 'animate__animated animate__fadeInDown'
+                                        },
+                                        hideClass: {
+                                            popup: 'animate__animated animate__fadeOutUp'
+                                        }
+                                    })
+
+                                    navigate('/')
+                                }
+                            })
+
                     }).catch((err) => {
                         setError(err.message)
                     });
@@ -109,7 +125,7 @@ const Signup = () => {
 
                             <p className='text-center mx-auto'><small>Have an account? <Link to='/login' className='text-gray-500'>please login</Link> </small></p>
                         </form>
-
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
