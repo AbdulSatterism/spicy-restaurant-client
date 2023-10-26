@@ -3,11 +3,13 @@ import { FaBars, FaBook, FaCalendarAlt, FaHome, FaShoppingCart, FaUsers, FaUtens
 import { NavLink, Outlet } from 'react-router-dom';
 import './DashboardLayout.css'
 import useCart from '../hooks/useCart';
+import useAdmin from '../hooks/useAdmin';
 
 const DashboardLayout = () => {
     const [cart] = useCart();
     //TODO: load data from the server for dynamic admin pannel
-    const isAdmin = true;
+    // const isAdmin = true;
+    const [isAdmin] = useAdmin()
 
     return (
         <div className="drawer  lg:drawer-open">

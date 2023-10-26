@@ -14,7 +14,7 @@ const SocialLogin = () => {
         googleSignIn()
             .then(result => {
                 const loggedInUser = result.user;
-                console.log(loggedInUser);
+                // console.log(loggedInUser);
                 const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email }
                 // set user in database
                 fetch('http://localhost:5000/users', {
