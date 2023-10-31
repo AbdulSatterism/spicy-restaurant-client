@@ -7,20 +7,19 @@ import useAdmin from '../hooks/useAdmin';
 
 const DashboardLayout = () => {
     const [cart] = useCart();
-    //TODO: load data from the server for dynamic admin pannel
-    // const isAdmin = true;
     const [isAdmin] = useAdmin()
 
     return (
         <div className="drawer  lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center justify-center">
+            <div className="drawer-content">
+                <label htmlFor="my-drawer-2" className="btn btn-active btn-ghost drawer-button lg:hidden"><FaBars></FaBars> </label>
                 {/* Page content here */}
                 <Outlet></Outlet>
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+
 
             </div>
-            <div className="drawer-side bg-[#D1A054]">
+            <div className="drawer-side lg:bg-[#D1A054]">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80  min-h-full">
                     {/* Sidebar content here */}
@@ -28,6 +27,7 @@ const DashboardLayout = () => {
                         isAdmin ? <>
                             <li className='text-white' ><NavLink to='/dashboard/home' ><FaHome></FaHome>Admin Home</NavLink></li>
                             <li className='text-white'><NavLink to='/dashboard/addItem' ><FaUtensils></FaUtensils> Add Item</NavLink></li>
+                            <li className='text-white'><NavLink to='/dashboard/manageitems' ><FaWallet></FaWallet> Manage Item</NavLink></li>
                             <li className='text-white'><NavLink to='/dashboard/manageBooking' ><FaBook></FaBook> Manage Booking</NavLink></li>
                             <li className='text-white'><NavLink to='/dashboard/allusers' ><FaUsers></FaUsers> All Users</NavLink></li>
                         </>
