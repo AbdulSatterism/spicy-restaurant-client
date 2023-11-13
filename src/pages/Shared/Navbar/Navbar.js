@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { FaShoppingCart, FaUserAlt } from 'react-icons/fa';
 import useCart from '../../../hooks/useCart';
+import useAdmin from '../../../hooks/useAdmin';
 
 const Navbar = () => {
     const { logOut, user } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
     const [cart] = useCart();
 
     const handleLogOut = () => {
@@ -19,7 +21,7 @@ const Navbar = () => {
         <li><Link className='text-xl ' to='/'>Home</Link></li>
         <li><Link className='text-xl ' to='/menu'>Menu</Link></li>
         <li><Link className='text-xl  ' to='/order/salad'>Order Food</Link></li>
-        <li><Link className='text-xl  ' to='/secret'>Secret</Link></li>
+        <li><Link className='text-xl  ' to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'}>Dashboard</Link></li>
         <li>
             <Link to='/dashboard/mycart'>
                 <button className="btn btn-sm">

@@ -25,7 +25,7 @@ const DashboardLayout = () => {
                     {/* Sidebar content here */}
                     {
                         isAdmin ? <>
-                            <li className='text-white' ><NavLink to='/dashboard/home' ><FaHome></FaHome>Admin Home</NavLink></li>
+                            <li className='text-white' ><NavLink to='/dashboard/adminhome' ><FaHome></FaHome>Admin Home</NavLink></li>
                             <li className='text-white'><NavLink to='/dashboard/addItem' ><FaUtensils></FaUtensils> Add Item</NavLink></li>
                             <li className='text-white'><NavLink to='/dashboard/manageitems' ><FaWallet></FaWallet> Manage Item</NavLink></li>
                             <li className='text-white'><NavLink to='/dashboard/manageBooking' ><FaBook></FaBook> Manage Booking</NavLink></li>
@@ -33,7 +33,7 @@ const DashboardLayout = () => {
                         </>
                             :
                             <>
-                                <li className='text-white' ><NavLink to='/dashboard/home' ><FaHome></FaHome>User Home</NavLink></li>
+                                <li className='text-white' ><NavLink to='/dashboard/userhome' ><FaHome></FaHome>User Home</NavLink></li>
                                 <li className='text-white'> <NavLink to='/dashboard/history'><FaWallet></FaWallet> Payment History</NavLink> </li>
                                 <li className='text-white'><NavLink to='/dashboard/reservations'><FaCalendarAlt></FaCalendarAlt> Reservation</NavLink></li>
                                 <li className='text-white'>
